@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Backbone zoom widget</title>
+  <script src="jquery-1.7.2.min.js"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+  <script src="zoom-widget.js"></script>
+  <link rel="stylesheet" href="zoom-widget.css">
+</head>
+<body>
+<div class="right-pane">
+  <div class="zoom-widget" id="page-1">
+    <div class="spill-zone">
+      <div class="zoomer"><img></div>
+      <div class="page-frame"></div>
+      <div class="page-edge"></div>
+    </div>
+    <button class="zoom details zoom-out">-</button>
+    <button class="zoom details zoom-in">+</button>
+    <div class="debug details">image offset:
+      <span class="offset_x">0</span>,
+      <span class="offset_y">0</span>; image_scale:
+      <span class="image_scale">1.00</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

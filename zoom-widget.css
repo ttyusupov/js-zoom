@@ -1,0 +1,109 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 500px;
+}
+
+/* the portion of screen in which zooming and positioning goes on
+ * - used for :hover selectors to show editor details selectively
+ */
+.right-pane {
+  background: #ccc;
+  float: right;
+  width: 40%;
+  height: 100%;
+  min-width: 460px; // 24 + read_embed_460.w + 24 px
+}
+
+/* parent div that holds all elements of the image zooming / plaement editor */
+.zoom-widget {
+  margin: 1em auto 0;
+  width: 460px;
+  overflow: hidden;
+}
+
+/* basing the widget on the read_embed_460 size
+ * - this overflow is what crops large images to our page size
+ * - some of these become visible while we're editing the page
+ */
+.zoomer, .page-frame, .page-edge, .spill-zone {
+  width: 412px;
+  height: 274px;
+  overflow: hidden;
+}
+
+/* surrounding 22px zone that shows if there's more image we can drag around */
+.spill-zone {
+  padding: 22px;
+  position: relative;
+}
+
+/* used to paint that zone in a darker shade while we drag and zoom the image */
+.page-frame {
+  cursor: move;
+  border: 22px solid transparent;
+  -webkit-transition: border-color 0.2s linear;
+  -moz-transition: border-color 0.2s linear;
+  -ms-transition: border-color 0.2s linear;
+  -o-transition: border-color 0.2s linear;
+  transition: border-color 0.2s linear;
+}
+
+/* visual cue to see clearly where the page edge is while dragging or zooming */
+.page-edge {
+  cursor: move;
+  margin: 21px;
+  border: 1px solid #000;
+}
+
+.page-frame, .page-edge {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+/* the image we're dragging around in the frame */
+.zoomer img {
+  outline: 1px dashed #000;
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* .details marks page elements we don't want to see unless we're editing now */
+.right-pane .details {
+  opacity: 0;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -ms-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+.right-pane:hover .details {
+  opacity: 1;
+}
+.right-pane:hover .page-frame {
+  border-color: rgba(0,0,0,0.2);
+}
+.right-pane:hover .page-edge {
+  border-color: #000;
+}
+
+button.zoom {
+  float: right;
+  cursor: pointer;
+}
+
+/* show extending parts of the picture in the spill zone, while we're editing */
+.right-pane:hover .zoomer {
+  overflow: visible;
+}
+
+.debug {
+  visibility: hidden;
+  text-align: right;
+  margin: 3px;
+}
